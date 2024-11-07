@@ -27,7 +27,7 @@ with open('README.md', 'r', encoding='utf-8') as f:
 
 setup(
     name="cosmos-tokenizer",
-    version="0.1.0",
+    version="1.0.0",
     author="NVIDIA Corporation",
     description="A suite of image and video neural tokenizers",
     long_description=long_description,
