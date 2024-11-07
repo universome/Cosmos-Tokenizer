@@ -45,10 +45,10 @@ Cosmos Tokenizer delivers 8x more total compression than state-of-the-art (SOTA)
 git clone https://github.com/NVIDIA/Cosmos-Tokenizer.git
 cd Cosmos-Tokenizer
 ```
-- Install dependencies
+- Install via pip
 ```
-pip3 install -r requirements.txt
 apt-get install -y ffmpeg
+pip3 install -e .
 ```
 
 Preferably, build a docker image using the provided Dockerfile
