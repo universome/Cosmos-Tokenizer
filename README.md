@@ -86,7 +86,7 @@ for model_name in model_names:
     local_dir = "pretrained_ckpts/" + model_name
     os.makedirs(local_dir, exist_ok=True)
     print(f"downloading {model_name}...")
-    snapshot_download(repo_id=hf_repo, allow_patterns=["*.jit"], local_dir=local_dir)
+    snapshot_download(repo_id=hf_repo, local_dir=local_dir)
 ```
 Under the checkpoint repository `pretrained_ckpts/{model_name}`, we provide the encoder, decoder and the full autoencoder JIT models.
 ```bash 
