@@ -63,7 +63,7 @@ docker run --gpus all -it --rm -v /home/${USER}:/home/${USER} \
 ## Download Pre-trained Checkpoints from Hugging Face
 
 
-We host 10 Cosmos-Tokenizer models on Hugging Face, with the following model names. You can use this snippet to download:
+We host 10 Cosmos-Tokenizer models on [Hugging Face](https://huggingface.co/collections/nvidia/cosmos-tokenizer-672b93023add81b66a8ff8e6), with the following model names. You can use this snippet to download:
 ```python
 from huggingface_hub import login, snapshot_download
 import os
