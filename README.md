@@ -23,10 +23,9 @@ We present **Cosmos Tokenizer**, a suite of image and video tokenizers that adva
 | ------------------|---------------------|---------------------|
 | **Images ( I )**        | Cosmos-Tokenizer-CI      | Cosmos-Tokenizer-DI      |
 | **Videos ( V )**        | Cosmos-Tokenizer-CV      | Cosmos-Tokenizer-DV      |
-
-[![Watch the video](https://github.com/NVIDIA/Cosmos-Tokenizer/blob/main/assets/cosmos-tokenizer.jpg?raw=true)](https://www.youtube.com/watch?v=Soy_myOfWIU)
-
-
+<video src="https://github.com/user-attachments/assets/996a8896-d1b0-4e56-a117-771df6a1d379" controls poster="https://github.com/NVIDIA/Cosmos-Tokenizer/blob/main/assets/cosmos-tokenizer.jpg?raw=true">
+  Your browser does not support the video tag.
+</video>
 
 Given an image or video, Cosmos Tokenizer outputs either continuous latents or discrete tokens. Cosmos Tokenizer achieves spatial compression rates of 8x or 16x and temporal compression factors of 4x or 8x, resulting in a total compression factor of up to 2048x (=8x16x16).
 Cosmos Tokenizer delivers 8x more total compression than state-of-the-art (SOTA) methods, while simultaneously maintaining higher image quality and running up to 12x faster than the best available SOTA tokenizers.
