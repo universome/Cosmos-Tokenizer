@@ -23,7 +23,7 @@ We present **Cosmos Tokenizer**, a suite of image and video tokenizers that adva
 | ------------------|---------------------|---------------------|
 | **Images ( I )**        | Cosmos-Tokenizer-CI      | Cosmos-Tokenizer-DI      |
 | **Videos ( V )**        | Cosmos-Tokenizer-CV      | Cosmos-Tokenizer-DV      |
-<video src="https://github.com/user-attachments/assets/996a8896-d1b0-4e56-a117-771df6a1d379" controls poster="https://github.com/NVIDIA/Cosmos-Tokenizer/blob/main/assets/cosmos-tokenizer.jpg?raw=true">
+<video src="https://github.com/user-attachments/assets/43c916e3-3a59-41d2-8a11-a055748971d4" controls poster="https://github.com/NVIDIA/Cosmos-Tokenizer/blob/main/assets/cosmos-tokenizer.jpg?raw=true">
   Your browser does not support the video tag.
 </video>
 
