@@ -14,7 +14,7 @@
 # limitations under the License. -->
 # Cosmos Tokenizer: A suite of image and video neural tokenizers.
 
-### [Website](https://research.nvidia.com/labs/dir/cosmos-tokenizer) | [Cosmos](https://www.nvidia.com/en-us/ai/cosmos/) | [NVIDIA News](https://blogs.nvidia.com/blog/robot-learning-humanoid-development/) | [NVIDIA Blog](https://developer.nvidia.com/blog/state-of-the-art-multimodal-generative-ai-model-development-with-nvidia-nemo/)  | [Hugging Face](https://huggingface.co/collections/nvidia/cosmos-tokenizer-672b93023add81b66a8ff8e6) | [YouTube](https://youtu.be/Soy_myOfWIU) | [TokenBench](https://github.com/NVlabs/TokenBench)
+### [Website](https://research.nvidia.com/labs/dir/cosmos-tokenizer) | [Paper](https://arxiv.org/abs/2501.03575) | [NVIDIA Cosmos](https://www.nvidia.com/en-us/ai/cosmos/) | [NVIDIA Blog](https://developer.nvidia.com/blog/state-of-the-art-multimodal-generative-ai-model-development-with-nvidia-nemo/)  | [Hugging Face](https://huggingface.co/collections/nvidia/cosmos-tokenizer-672b93023add81b66a8ff8e6) | [YouTube](https://youtu.be/Soy_myOfWIU) | [TokenBench](https://github.com/NVlabs/TokenBench)
 
 We present [**NVIDIA Cosmos Tokenizer**](https://github.com/NVIDIA/Cosmos-Tokenizer), a suite of image and video tokenizers that advances the state-of-the-art in visual tokenization, paving the way for scalable, robust and efficient development of large auto-regressive transformers (such as LLMs) or diffusion generators. Cosmos Tokenizer is the core component of the [**NVIDIA Cosmos**](https://github.com/NVIDIA/Cosmos), a developer-first video foundation model platform designed to help Physical AI developers build their Physical AI systems better and faster. Please check out our [demo video](https://youtu.be/Soy_myOfWIU).
 
@@ -64,7 +64,7 @@ docker run --gpus all -it --rm -v /home/${USER}:/home/${USER} \
 ## Download Pre-trained Checkpoints from Hugging Face
 
 
-We host 10 Cosmos-Tokenizer models on [Hugging Face](https://huggingface.co/collections/nvidia/cosmos-tokenizer-672b93023add81b66a8ff8e6), with the following model names. You can use this snippet to download:
+We host 12 Cosmos-Tokenizer models on [Hugging Face](https://huggingface.co/collections/nvidia/cosmos-tokenizer-672b93023add81b66a8ff8e6), with the following model names. You can use this snippet to download:
 ```python
 from huggingface_hub import login, snapshot_download
 import os
@@ -93,7 +93,7 @@ for model_name in model_names:
 ```
 Under the checkpoint repository `pretrained_ckpts/{model_name}`, we provide the encoder, decoder and the full autoencoder JIT models.
 ```bash 
-├── Cosmos-Tokenizer-DV4x8x8/
+├── Cosmos-1.0-Tokenizer-CV8x8x8/
 │   ├── encoder.jit
 │   ├── decoder.jit
 │   ├── autoencoder.jit
@@ -249,6 +249,19 @@ TokenBench is a comprehensive benchmark that we have curated to standardize the 
 Fitsum Reda, Jinwei Gu, Xian Liu, Songwei Ge, Ting-Chun Wang, Haoxiang Wang, Ming-Yu Liu
 
 
+## Citation
+
+If you find Cosmos Tokenizer useful in your works, please acknowledge it
+appropriately by citing:
+
+```
+@article{agarwal2025cosmos,
+  title={Cosmos World Foundation Model Platform for Physical AI},
+  author={NVIDIA et. al.},
+  journal={arXiv preprint arXiv:2501.03575},
+  year={2025}
+}
+```
 ## Acknowledgments
 We would like to acknowledge the following projects where parts of the codes in the [cosmos_tokenizer/modules](cosmos_tokenizer/modules) folder is derived from:
 - [CompVis/stable-diffusion](https://github.com/CompVis/stable-diffusion)
