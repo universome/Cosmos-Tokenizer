@@ -54,11 +54,11 @@ pip3 install -e .
 
 Preferably, build a docker image using the provided Dockerfile
 ```
-docker build -t cosmos-docker -f Dockerfile .
+docker build -t cosmos-tokenizer -f Dockerfile .
 
 # You can run the container as:
 docker run --gpus all -it --rm -v /home/${USER}:/home/${USER} \
-    --workdir ${PWD} cosmos-docker /bin/bash
+    --workdir ${PWD} cosmos-tokenizer /bin/bash
 ```
 
 ## Download Pre-trained Checkpoints from Hugging Face
@@ -108,7 +108,7 @@ For each, the same command works for both continuous and discrete tokenization. 
 import torch
 from cosmos_tokenizer.video_lib import CausalVideoTokenizer
 
-model_name = "Cosmos-Tokenizer-CV4x8x8"
+model_name = "Cosmos-0.1-Tokenizer-CV4x8x8"
 input_tensor = torch.randn(1, 3, 9, 512, 512).to('cuda').to(torch.bfloat16)  # [B, C, T, H, W]
 encoder = CausalVideoTokenizer(checkpoint_enc=f'pretrained_ckpts/{model_name}/encoder.jit')
 (latent,) = encoder.encode(input_tensor)
@@ -126,7 +126,7 @@ The `latent` will have the shape `(1, 16, 3, 64, 64)`, where the first of the th
 import torch
 from cosmos_tokenizer.video_lib import CausalVideoTokenizer
 
-model_name = "Cosmos-Tokenizer-DV4x8x8"
+model_name = "Cosmos-0.1-Tokenizer-DV4x8x8"
 input_tensor = torch.randn(1, 3, 9, 512, 512).to('cuda').to(torch.bfloat16)  # [B, C, T, H, W]
 encoder = CausalVideoTokenizer(checkpoint_enc=f'pretrained_ckpts/{model_name}/encoder.jit')
 (indices, codes) = encoder.encode(input_tensor)
@@ -147,7 +147,7 @@ The following instructions run the various tokenizer on the example image and vi
 - Autoencoding images. Accepts an input image, and outputs a reconstruction of the image obtained by decoding the encoded latents. 
 ```bash
 # Autoencoding images using `Cosmos-CI` with a compression rate of 8x8.
-model_name="Cosmos-Tokenizer-CI8x8"
+model_name="Cosmos-0.1-Tokenizer-CI8x8"
 python3 -m cosmos_tokenizer.image_cli \
     --image_pattern 'test_data/image.png' \
     --checkpoint_enc pretrained_ckpts/${model_name}/encoder.jit \
@@ -158,7 +158,7 @@ If `--output_dir` is not specified, you can find the reconstructed image at `tes
 - Autoencoding videos. Accepts an input video, and outputs a reconstruction of the video obtained by decoding the encoded latents.
 ```bash
 # Autoencoding videos using `Cosmos-DV` with a compression rate of 4x8x8.
-model_name="Cosmos-Tokenizer-DV4x8x8"
+model_name="Cosmos-0.1-Tokenizer-DV4x8x8"
 python3 -m cosmos_tokenizer.video_cli \
     --video_pattern 'test_data/video.mp4' \
     --checkpoint_enc pretrained_ckpts/${model_name}/encoder.jit \
@@ -182,7 +182,7 @@ The necessary `state_dict`s will be extracted from the loaded JIT models to init
 
 ```bash
 # Autoencoding images using `Cosmos-DI` with a compression rate of 8x8.
-model_name="Cosmos-Tokenizer-DI8x8"
+model_name="Cosmos-0.1-Tokenizer-DI8x8"
 python3 -m cosmos_tokenizer.image_cli \
     --image_pattern 'test_data/*.png' \
     --mode=torch \
@@ -201,7 +201,7 @@ To instantiate a `Cosmos-CV` with a temporal factor of 8 and a spatial compressi
 
 ```bash
 # Autoencoding videos using `Cosmos-CV` with a compression rate of 8x8x8.
-model_name="Cosmos-Tokenizer-CV8x8x8"
+model_name="Cosmos-1.0-Tokenizer-CV8x8x8"
 python3 -m cosmos_tokenizer.video_cli \
     --video_pattern 'test_data/*.mp4' \
     --mode=torch \
@@ -223,7 +223,7 @@ Run the following code to tokenize the video:
 ```python
 import torch
 from nemo.collections.common.video_tokenizers.cosmos_vision_tokenizer import CausalVideoTokenizer
-model_name = "Cosmos-Tokenizer-CV4x8x8"
+model_name = "Cosmos-0.1-Tokenizer-CV4x8x8"
 model = CausalVideoTokenizer.from_pretrained(model_name)
 input_tensor = torch.randn(1, 3, 9, 512, 512).to('cuda').to(torch.bfloat16)
 (latent, ) = model.encode(input_tensor)
