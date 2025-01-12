@@ -121,7 +121,7 @@ def load_jit_model(
     Returns:
         The JIT compiled model loaded to device and on eval mode.
     """
-    model = torch.jit.load(jit_filepath, device)
+    model = torch.jit.load(jit_filepath, map_location=device)
     return model.eval().to(device)
 
 
