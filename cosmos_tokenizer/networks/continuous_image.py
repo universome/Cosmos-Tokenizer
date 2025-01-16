@@ -30,9 +30,7 @@ NetworkEval = namedtuple("NetworkEval", ["reconstructions", "posteriors", "laten
 
 
 class ContinuousImageTokenizer(nn.Module):
-    def __init__(
-        self, z_channels: int, z_factor: int, latent_channels: int, **kwargs
-    ) -> None:
+    def __init__(self, z_channels: int, z_factor: int, latent_channels: int, verbose: bool=False, **kwargs) -> None:
         super().__init__()
         self.name = kwargs.get("name", "ContinuousImageTokenizer")
         self.latent_channels = latent_channels
@@ -52,15 +50,14 @@ class ContinuousImageTokenizer(nn.Module):
 
         formulation_name = kwargs.get("formulation", ContinuousFormulation.AE.name)
         self.distribution = ContinuousFormulation[formulation_name].value()
-        logging.info(
-            f"{self.name} based on {formulation_name} formulation, with {kwargs}."
-        )
+        if verbose:
+            logging.info(f"{self.name} based on {formulation_name} formulation, with {kwargs}.")
 
         num_parameters = sum(param.numel() for param in self.parameters())
-        logging.info(f"model={self.name}, num_parameters={num_parameters:,}")
-        logging.info(
-            f"z_channels={z_channels}, latent_channels={self.latent_channels}."
-        )
+
+        if verbose:
+            logging.info(f"model={self.name}, num_parameters={num_parameters:,}")
+            logging.info(f"z_channels={z_channels}, latent_channels={self.latent_channels}.")
 
     def encoder_jit(self):
         return nn.Sequential(

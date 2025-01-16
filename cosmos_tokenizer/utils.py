@@ -100,7 +100,7 @@ def load_decoder_model(
 
 
 def _load_pytorch_model(
-    jit_filepath: str = None, tokenizer_config: str = None, device: str = "cuda"
+    jit_filepath: str = None, tokenizer_config: dict = None, device: str = "cuda"
 ) -> torch.nn.Module:
     """Loads a torch.nn.Module from a filepath.
 
