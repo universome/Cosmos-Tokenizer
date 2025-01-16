@@ -40,22 +40,23 @@ class CausalVideoTokenizer(torch.nn.Module):
         tokenizer_config: dict[str, Any] = None,
         device: str = "cuda",
         dtype: str = "bfloat16",
+        reset_weights: bool = False,
     ) -> None:
         super().__init__()
         self._device = device
         self._dtype = getattr(torch, dtype)
         self._full_model = (
-            load_model(checkpoint, tokenizer_config, device).to(self._dtype)
+            load_model(checkpoint, tokenizer_config, device, reset_weights).to(self._dtype)
             if checkpoint is not None
             else None
         )
         self._enc_model = (
-            load_encoder_model(checkpoint_enc, tokenizer_config, device).to(self._dtype)
+            load_encoder_model(checkpoint_enc, tokenizer_config, device, reset_weights).to(self._dtype)
             if checkpoint_enc is not None
             else None
         )
         self._dec_model = (
-            load_decoder_model(checkpoint_dec, tokenizer_config, device).to(self._dtype)
+            load_decoder_model(checkpoint_dec, tokenizer_config, device, reset_weights).to(self._dtype)
             if checkpoint_dec is not None
             else None
         )

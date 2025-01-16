@@ -35,6 +35,7 @@ def load_model(
     jit_filepath: str = None,
     tokenizer_config: dict[str, Any] = None,
     device: str = "cuda",
+    reset_weights: bool = False,
 ) -> torch.nn.Module | torch.jit.ScriptModule:
     """Loads a torch.nn.Module from a filepath.
 
@@ -47,7 +48,8 @@ def load_model(
     if tokenizer_config is None:
         return load_jit_model(jit_filepath, device)
     full_model, ckpts = _load_pytorch_model(jit_filepath, tokenizer_config, device)
-    full_model.load_state_dict(ckpts.state_dict(), strict=False)
+    if not reset_weights:
+        full_model.load_state_dict(ckpts.state_dict(), strict=False)
     return full_model.eval().to(device)
 
 
@@ -55,6 +57,7 @@ def load_encoder_model(
     jit_filepath: str = None,
     tokenizer_config: dict[str, Any] = None,
     device: str = "cuda",
+    reset_weights: bool = False,
 ) -> torch.nn.Module | torch.jit.ScriptModule:
     """Loads a torch.nn.Module from a filepath.
 
@@ -68,7 +71,8 @@ def load_encoder_model(
         return load_jit_model(jit_filepath, device)
     full_model, ckpts = _load_pytorch_model(jit_filepath, tokenizer_config, device)
     encoder_model = full_model.encoder_jit()
-    encoder_model.load_state_dict(ckpts.state_dict(), strict=False)
+    if not reset_weights:
+        encoder_model.load_state_dict(ckpts.state_dict(), strict=False)
     return encoder_model.eval().to(device)
 
 
@@ -76,6 +80,7 @@ def load_decoder_model(
     jit_filepath: str = None,
     tokenizer_config: dict[str, Any] = None,
     device: str = "cuda",
+    reset_weights: bool = False,
 ) -> torch.nn.Module | torch.jit.ScriptModule:
     """Loads a torch.nn.Module from a filepath.
 
@@ -89,7 +94,8 @@ def load_decoder_model(
         return load_jit_model(jit_filepath, device)
     full_model, ckpts = _load_pytorch_model(jit_filepath, tokenizer_config, device)
     decoder_model = full_model.decoder_jit()
-    decoder_model.load_state_dict(ckpts.state_dict(), strict=False)
+    if not reset_weights:
+        decoder_model.load_state_dict(ckpts.state_dict(), strict=False)
     return decoder_model.eval().to(device)
 
 
