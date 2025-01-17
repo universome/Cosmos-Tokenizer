@@ -61,7 +61,6 @@ class CausalVideoTokenizer(torch.nn.Module):
             else None
         )
 
-    @torch.no_grad()
     def autoencode(self, input_tensor: torch.Tensor) -> torch.Tensor:
         """Reconstrcuts a batch of video tensors after embedding into a latent.
 
@@ -80,7 +79,6 @@ class CausalVideoTokenizer(torch.nn.Module):
             output_tensor = self.decode(output_latent)
         return output_tensor
 
-    @torch.no_grad()
     def encode(self, input_tensor: torch.Tensor) -> tuple[torch.Tensor]:
         """Encodes a numpy video into a CausalVideo latent or code.
 
@@ -103,7 +101,6 @@ class CausalVideoTokenizer(torch.nn.Module):
             return output_latent
         return output_latent[:-1]
 
-    @torch.no_grad()
     def decode(self, input_latent: torch.Tensor) -> torch.Tensor:
         """Encodes a numpy video into a CausalVideo latent.
 
